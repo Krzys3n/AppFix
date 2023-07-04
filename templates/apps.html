@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Aplikacje:</p>
+
+<ul>
+    {% for app in apps %}
+        <li>
+            <a href="{% url 'app' app.id %}">{{ app.appName }}</a>
+        </li>
+    {% empty %}
+        <li>Nie został jeszcze dodany żaden temat.</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
+
+</body>
+</html>

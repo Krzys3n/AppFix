@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% extends 'base.html' %}
+{% block content %}
+
+<p>Aplikacja: {{ app.appName }}</p>
+<p>Zgłoszenia:</p>
+    <ul>
+        {% for report in reports %}
+        <li>
+            <p>{{ report.date_added|date:'d M Y H:i' }}</p>
+            <p>{{ report.text|linebreaks }}</p>
+        </li>
+        {% empty %}
+        <li>Nie ma jeszcze żadnego wpisu.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
+
+
+</body>
+</html>
