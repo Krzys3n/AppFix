@@ -2,20 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>AppFix</title>
+
+    <style>
+        .wrapped-text {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+
 </head>
 <body>
 
-{% extends 'base.html' %}
+{% extends 'base.html' %}s
 {% block content %}
 
-<p>Aplikacja: {{ app.appName }}</p>
+    <p>Aplikacja: {{ app.appName }}</p>
+    <a href="{% url 'new_report' %}">Zgłoś błąd</a>
+    <p class="wrapped-text">Opis Aplikacji: {{ app.text }}</p>
 <p>Zgłoszenia:</p>
     <ul>
         {% for report in reports %}
-        <li>
+        <li >
             <p>{{ report.date_added|date:'d M Y H:i' }}</p>
-            <p>{{ report.text|linebreaks }}</p>
+            <p class="wrapped-text">{{ report.text|linebreaksbr }}</p>
         </li>
         {% empty %}
         <li>Nie ma jeszcze żadnego wpisu.</li>
