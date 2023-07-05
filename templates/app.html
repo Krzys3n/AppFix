@@ -18,12 +18,13 @@
 {% block content %}
 
     <p>Aplikacja: {{ app.appName }}</p>
-    <a href="{% url 'new_report' %}">Zgłoś błąd</a>
+    <a href="{% url 'new_report' app.id %}">Zgłoś błąd</a>
     <p class="wrapped-text">Opis Aplikacji: {{ app.text }}</p>
 <p>Zgłoszenia:</p>
     <ul>
         {% for report in reports %}
         <li >
+            <a href="{% url 'edit_report' report.id %}">Edytuj wpis</a>
             <p>{{ report.date_added|date:'d M Y H:i' }}</p>
             <p class="wrapped-text">{{ report.text|linebreaksbr }}</p>
         </li>
