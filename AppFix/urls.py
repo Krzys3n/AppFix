@@ -23,4 +23,5 @@ app_name = 'AppFixA'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('AppFixA.urls')),
+    path('users/', include('users.urls')),
 ]
