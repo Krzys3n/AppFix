@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AppFix</title>
+
+    <style>
+        .wrapped-text {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+
+</head>
+<body>
+
+{% extends 'base.html' %}s
+{% block content %}
+
+    <p>Aplikacja: {{ app.appName }}</p>
+    <a href="{% url 'new_report' app.id %}">Zgłoś błąd</a>
+    <p class="wrapped-text">Opis Aplikacji: {{ app.text }}</p>
+<p>Zgłoszenia:</p>
+    <ul>
+        {% for report in reports %}
+        <li >
+            <a href="{% url 'edit_report' report.id %}">Edytuj wpis</a>
+            <p>{{ report.date_added|date:'d M Y H:i' }}</p>
+            <p class="wrapped-text">{{ report.text|linebreaksbr }}</p>
+        </li>
+        {% empty %}
+        <li>Nie ma jeszcze żadnego wpisu.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
+
+
+</body>
+</html>
