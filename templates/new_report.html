@@ -7,11 +7,12 @@
 <body>
 
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
         <p>Zgłoszenie:</p>
         <form action="{% url 'new_report' app_id=app_id %}" method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+              {{ form | crispy}}
             <button name="submit">Dodaj zgłoszenie</button>
         </form>
 

@@ -1,0 +1,1 @@
+web: gunicorn AppFix.wsgi --log-file -

@@ -7,15 +7,22 @@
 <body>
 
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-        <p>Nazwa:</p>
+
+       <h3> <p>Uzupełnij Pola:</p></h3>
         <form action="{% url 'new_app' %}" method='post'>
             {% csrf_token %}
-            {{ form.as_p }}
-            <button name="submit">Dodaj temat</button>
+            {{ form | crispy}}
+{#          {{ form.as_p }}#}
+
+
+
+            <button name="submit">Dodaj aplikację</button>
         </form>
 
 {% endblock content %}
+
 
 </body>
 </html>

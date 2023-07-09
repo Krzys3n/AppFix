@@ -14,22 +14,29 @@
 </head>
 <body>
 
-{% extends 'base.html' %}s
+{% extends 'base.html' %}
+
+{% block page_header %}
+ <h2><p>Aplikacja: {{ app.appName }}</p></h2>
+{% endblock page_header %}
+
 {% block content %}
 
-    <p>Aplikacja: {{ app.appName }}</p>
-    <a href="{% url 'new_report' app.id %}">Zgłoś błąd</a>
+
+    <h3><a href="{% url 'new_report' app.id %}">Zgłoś błąd</a></h3>
     <p class="wrapped-text">Opis Aplikacji: {{ app.text }}</p>
-<p>Zgłoszenia:</p>
+<p><h3>Zgłoszenia:</h3></p>
     <ul>
         {% for report in reports %}
-        <li >
-            <a href="{% url 'edit_report' report.id %}">Edytuj wpis</a>
-            <p>{{ report.date_added|date:'d M Y H:i' }}</p>
-            <p class="wrapped-text">{{ report.text|linebreaksbr }}</p>
-        </li>
-        {% empty %}
-        <li>Nie ma jeszcze żadnego wpisu.</li>
+            <div class="card mb-3">
+             <h4 class="card-header">
+             {{ report.date_added|date:'d M Y H:i' }}
+             <small><a href="{% url 'edit_report' report.id %}">Edytuj wpis</a></small>
+             </h4>
+             <div class="card-body">
+             {{ report.text|linebreaksbr }}
+             </div>
+             </div>
         {% endfor %}
     </ul>
 {% endblock content %}

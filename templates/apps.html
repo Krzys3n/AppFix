@@ -7,22 +7,26 @@
 <body>
 
 {% extends "base.html" %}
+{% block page_header %}
+ <h1>Aplikacje</h1>
+{% endblock page_header %}
+
 
 {% block content %}
 
-<p>Aplikacje:</p>
+
 
 <ul>
     {% for app in apps %}
-        <li>
+        <li><h3>
             <a href="{% url 'app' app.id %}">{{ app.appName }}</a>
-        </li>
+        </h3></li>
     {% empty %}
         <li>Nie została jeszcze dodana żadna aplikacja.</li>
     {% endfor %}
 </ul>
 
-   <a href="{% url 'new_app' %}">Dodaj nową aplikację</a>
+   <h4><a href="{% url 'new_app' %}">Dodaj nową aplikację</a></h4>
 
 {% endblock content %}
 

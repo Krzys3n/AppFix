@@ -6,10 +6,20 @@
 </head>
 <body>
 
-{% extends "base.html" %}
-{% block content %}
-<p>AppFix pozwala zgłaszać błędy występujące w danej aplikacji.</p>
-{% endblock content %}
+
+    {% extends "base.html" %}
+     {% block page_header %}
+     <div class='jumbotron'>
+     <h1 class="display-4">Monitoruj błędy w swoich aplikacjach</h1>
+     <p class="lead">Załóż konto, aby rozpocząć korzystanie z aplikacji
+     AppFix oraz stworzyć listę Twoich własnych aplikacji. Gdy
+     znajdziesz jakiś błąd, utwórz zgłsozenie informujące twórców o problemie.</p>
+     <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+    role="button">Zarejestruj konto &raquo;</a>
+     </div>
+    {% endblock page_header %}
+
+
 
 </body>
 </html>
